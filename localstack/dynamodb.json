@@ -1,0 +1,101 @@
+{
+  "demo": [
+    {
+      "PutRequest": {
+        "Item": {
+          "checkpoint": {
+            "S": "SHARD_END"
+          },
+          "endingHashKey": {
+            "S": "340282366920938463463374607431768211455"
+          },
+          "leaseCounter": {
+            "N": "0"
+          },
+          "ownerSwitchesSinceCheckpoint": {
+            "N": "0"
+          },
+          "checkpointSubSequenceNumber": {
+            "N": "0"
+          },
+          "leaseKey": {
+            "S": "shardId-000000000000"
+          },
+          "startingHashKey": {
+            "S": "0"
+          },
+          "childShardIds": {
+            "SS": [
+              "shardId-000000000001",
+              "shardId-000000000002"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "checkpoint": {
+            "S": "TRIM_HORIZON"
+          },
+          "endingHashKey": {
+            "S": "9999999999999999999999"
+          },
+          "leaseCounter": {
+            "N": "0"
+          },
+          "ownerSwitchesSinceCheckpoint": {
+            "N": "0"
+          },
+          "checkpointSubSequenceNumber": {
+            "N": "0"
+          },
+          "leaseKey": {
+            "S": "shardId-000000000001"
+          },
+          "startingHashKey": {
+            "S": "0"
+          },
+          "parentShardIds": {
+            "SS": [
+              "shardId-000000000000"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "checkpoint": {
+            "S": "TRIM_HORIZON"
+          },
+          "endingHashKey": {
+            "S": "340282366920938463463374607431768211455"
+          },
+          "leaseCounter": {
+            "N": "0"
+          },
+          "ownerSwitchesSinceCheckpoint": {
+            "N": "0"
+          },
+          "checkpointSubSequenceNumber": {
+            "N": "0"
+          },
+          "leaseKey": {
+            "S": "shardId-000000000002"
+          },
+          "startingHashKey": {
+            "S": "10000000000000000000000"
+          },
+          "parentShardIds": {
+            "SS": [
+              "shardId-000000000000"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

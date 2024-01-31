@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  localstack:
+    image: localstack/localstack:2.3.0
+    ports:
+      - "4566:4566"
+    environment:
+      AWS_DEFAULT_REGION: ap-northeast-1
+    healthcheck:
+      test: awslocal kinesis list-streams && awslocal dynamodb list-tables
+      interval: 10s
+      timeout: 10s
+      retries: 10
+    volumes:
+      - ./localstack/init.sh:/etc/localstack/init/ready.d/init.sh
+      - ./localstack/dynamodb.json:/etc/localstack/init/ready.d/dynamodb.json
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        KCL_PROPERTY_FILE: kcl.properties
+    environment:
+      AWS_ENDPOINT_URL: "http://localstack:4566"
+      AWS_ACCESS_KEY_ID: test
+      AWS_SECRET_ACCESS_KEY: test
+    depends_on:
+      localstack:
+        condition: service_healthy
